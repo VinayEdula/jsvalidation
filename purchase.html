@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Purchase Form</title>
+</head>
+
+<body>
+    <h2 ALIGN="CENTER">Purchase Form</h2>
+    <form name="jsvalidation" onsubmit="return(validate());">
+        <table bgcolor="grey" align="center">
+            <tr>
+                <td>Product ID: </td>
+                <td><input type=text name="ptext" id="ptext" maxlength="3" size="4">
+                    -
+                    <input type="text" name="pcode" id="pcode" maxlength="6" size="8">
+                </td>
+            </tr>
+            <tr>
+                <td>Product Name: </td>
+                <td><input type="text" name="pname" id="prodname" size="30" required></td>
+            </tr>
+            <tr>
+                <td>Quantity: </td>
+                <td><select name="quant" required>
+                        <option value="0" selected>Maximum only 10</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+
+                    </select></td>
+            </tr>
+
+        </table>
+    </form>
+    <p></p>
+    <div align="center">
+        <h1>Total prize is:
+            <b id="finalresult"></b>
+        </h1>
+    </div>
+
+    <script>
+
+        var form = document.forms.jsvalidation;
+        form.quant.onchange = calculate;
+
+        function calculate() {
+            var x = parseInt(document.jsvalidation.quant.value)
+            var result = x * 117;
+            document.getElementById('finalresult').innerHTML = result;
+        }
+
+        calculate();
+    </script>
+</body>
+
+</html>

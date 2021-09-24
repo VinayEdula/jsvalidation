@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Javascript Validation</title>
+</head>
+
+<body>
+    <div align="center">
+        <h2 ALIGN="CENTER">Javascript Validation</h2>
+
+        <form name="jsvalidation" onsubmit="return(validate());">
+            <table bgcolor="grey" align="center">
+                <tr>
+                    <td>Product ID: </td>
+                    <td><input type=text name="ptext" id="ptext" maxlength="3" size="4">
+                        -
+                        <input type="text" name="pcode" id="pcode" maxlength="6" size="8">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Product Name: </td>
+                    <td><input type="text" name="pname" id="prodname" size="30" required></td>
+                </tr>
+                <tr>
+                    <td>Quantity: </td>
+                    <td><select name="quant" required>
+                            <option value="-1" selected>Maximum only 10</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">1</option>
+                            <option value="6">2</option>
+                            <option value="7">3</option>
+                            <option value="8">4</option>
+                            <option value="9">1</option>
+                            <option value="10">2</option>
+
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>Prize: </td>
+                    <td><input type="number" name="prize" min="100" max="9999" id="prixx" size="30" required></td>
+                </tr>
+                <tr>
+                    <td>Total Value: </td>
+                    <td><input type="text" name="tval" id="totalvalue" size="30" required></td>
+                </tr>
+
+                <tr>
+                    <td>Date of purchase: </td>
+                    <td><input type="date" name="date" id="date" size="30" required></td>
+                </tr>
+
+                <tr>
+                    <td>EmailId: </td>
+                    <td><input type="text" name="emailid" id="emailid" size="30" required></td>
+                </tr>
+
+                <tr>
+                    <td>MobileNo: </td>
+                    <td><input type="text" name="mobileno" id="mobileno" size="30" required></td>
+                </tr>
+                <tr>
+                    <td><input type="reset"></td>
+                    <td colspan="2"><input type="submit" value="Submit Form" required /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <p></p>
+    <div align="center">
+        <a href="purchase.html"><b>GO TO PURCHASE FORM</b></a>
+    </div>
+    <script type="text/javascript">
+        function validate() {
+            var p1 = document.jsvalidation.ptext.value
+            var p2 = document.jsvalidation.pcode.value
+            var rex = /[A-Z]{3}$/;
+            var rex1 = /[0-9]{6}$/;
+            if (!p1.match(rex)) {
+                alert("INVALID PRODUCT TEXT");
+                return false;
+            }
+            if (!p2.match(rex1)) {
+                alert("INVALID PRODUCT CODE");
+                return false;
+            }
+            var pn = document.jsvalidation.pname.value
+            if (pn.length > 50) {
+                alert("Maximum length for product name is 50");
+                return false;
+            }
+
+
+
+
+            var p3 = document.jsvalidation.tval.value
+            if (p3.match('X')) {
+                alert("Total value cannot be X");
+                return false;
+            }
+
+
+
+            if ((document.jsvalidation.mobileno.value == "") || isNaN(document.jsvalidation.mobileno.value) || document.jsvalidation.mobileno.value.length != 10) {
+                alert("ENTER THE CORRECT MOBILE NO");
+                return false;
+            }
+
+            var email = document.jsvalidation.emailid.value;
+            atpos = email.indexOf("@");
+            dotpos = email.lastIndexOf(".");
+            if (email == "" || atpos < 1 || (dotpos - atpos < 2)) {
+                alert("ENTER CORRECT EMAIL");
+                return false;
+            }
+
+
+        }
+
+
+    </script>
+
+
+
+</body>
+
+</html>
